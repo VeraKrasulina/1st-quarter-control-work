@@ -18,3 +18,29 @@ void PrintStringArray (string[] imput)
 // Printing imput array
 PrintStringArray (imputArray);
 Console.WriteLine();
+
+//Here we shall put our resulting elements
+string[] resultArray = new string[imputArray.Length];
+
+// Method to put our needed elements in another array and remove empty
+void FindSmallStringsAndFillResultArray(string[] imput, string[] result, int ind = 0)
+{
+    for (int i = 0; i < imput.Length; i++)
+    {
+
+        if (imput[i].Length <= 3)
+        {
+            result[ind] = imput[i];
+            ind++;
+        }
+    }
+    if (ind > 0)
+    {
+        Array.Resize(ref result, ind);
+        PrintStringArray(result);
+    }
+    else { Console.Write("=> [ Результатов нет. ]");}
+}
+
+Console.WriteLine("Массив результата:");
+FindSmallStringsAndFillResultArray(imputArray, resultArray);
